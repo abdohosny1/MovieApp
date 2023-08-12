@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MovieApp.Migrations
+namespace MovieApp.DataAcessLayer.Migrations
 {
     public partial class init : Migration
     {

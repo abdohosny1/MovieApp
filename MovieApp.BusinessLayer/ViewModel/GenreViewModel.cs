@@ -1,4 +1,6 @@
-﻿namespace MovieApp.ViewModel
+﻿using System.Xml.Linq;
+
+namespace MovieApp.BusinessLayer.ViewModel
 {
     public class GenreViewModel
     {

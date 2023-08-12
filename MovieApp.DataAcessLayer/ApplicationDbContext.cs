@@ -1,8 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MovieApp.Models;
+using MovieApp.BusinessLayer.Model;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MovieApp.Data
+namespace MovieApp.DataAcessLayer
 {
     public class ApplicationDbContext : DbContext
     {

@@ -1,8 +1,8 @@
-﻿using MovieApp.Data;
-using MovieApp.Data.Base;
-using MovieApp.Models;
+﻿using MovieApp.BusinessLayer.interfaces;
+using MovieApp.BusinessLayer.Model;
+using MovieApp.DataAcessLayer.EntityBaseRepositories;
 
-namespace MovieApp.services.Movies
+namespace MovieApp.DataAcessLayer.services
 {
     public class MovieService : EntityBaseRepository<Movie>, IMovieService
     {

@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
-using System;
 
-namespace MovieApp.Data.Base
+namespace MovieApp.BusinessLayer.interfaces
 {
     public interface IEntityBaseRepository<T> where T : class
     {
@@ -32,3 +34,4 @@ namespace MovieApp.Data.Base
         Task DeleteAsync(int id);
     }
 }
+

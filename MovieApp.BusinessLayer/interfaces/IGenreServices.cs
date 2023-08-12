@@ -1,9 +1,8 @@
-﻿using MovieApp.Data.Base;
-using MovieApp.Models;
+﻿using MovieApp.BusinessLayer.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MovieApp.services.Genres
+namespace MovieApp.BusinessLayer.interfaces
 {
     public interface IGenreServices : IEntityBaseRepository<Genre>
     {
@@ -11,3 +10,4 @@ namespace MovieApp.services.Genres
         Task<List<Movie>> GetAllMovieByGenreName(int genreId);
     }
 }
+

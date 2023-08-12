@@ -1,6 +1,4 @@
-using System;
-
-namespace MovieApp.Models
+﻿namespace MovieApp.BusinessLayer.Model
 {
     public class ErrorViewModel
     {

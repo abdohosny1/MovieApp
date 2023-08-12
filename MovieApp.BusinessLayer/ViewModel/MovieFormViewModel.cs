@@ -1,15 +1,9 @@
-﻿using MovieApp.Models;
+﻿using MovieApp.BusinessLayer.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
-namespace MovieApp.ViewModel
+namespace MovieApp.BusinessLayer.ViewModel
 {
-
-
-
-
-
     public class MovieFormViewModel
     {
         public int Id { get; set; }

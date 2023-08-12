@@ -1,21 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MovieApp.Data;
-using MovieApp.Data.Seed;
-using MovieApp.services.Genres;
-using MovieApp.services.Genres;
-using MovieApp.services.Movies;
-using MovieApp.services.Movies;
+using MovieApp.BusinessLayer.interfaces;
+using MovieApp.DataAcessLayer;
+using MovieApp.DataAcessLayer.SeedData;
+using MovieApp.DataAcessLayer.services;
 using NToastNotify;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MovieApp
 {
@@ -31,10 +24,15 @@ namespace MovieApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //  options.UseSqlServer(
+            //      Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-              options.UseSqlServer(
-                  Configuration.GetConnectionString("DefaultConnection")));
+            //add dbcontext
+            var connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<ApplicationDbContext>(
+                op => op.UseSqlServer(connection,
+                       b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddMvc().AddNToastNotifyToastr(new ToastrOptions()
             {
@@ -77,7 +75,6 @@ namespace MovieApp
             });
 
             ApplicatioContextSeeding.Seed(app);
-
         }
     }
 }

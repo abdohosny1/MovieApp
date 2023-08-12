@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieApp.Models;
-using MovieApp.services.Genres;
-using MovieApp.services.Movies;
-using MovieApp.ViewModel;
+using MovieApp.BusinessLayer.interfaces;
+using MovieApp.BusinessLayer.Model;
+using MovieApp.BusinessLayer.ViewModel;
 using NToastNotify;
 using System.Collections.Generic;
 using System.Linq;

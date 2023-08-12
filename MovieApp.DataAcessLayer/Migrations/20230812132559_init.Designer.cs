@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MovieApp.Data;
+using MovieApp.DataAcessLayer;
 
-namespace MovieApp.Migrations
+namespace MovieApp.DataAcessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230811105509_init")]
+    [Migration("20230812132559_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace MovieApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MovieApp.Models.Genre", b =>
+            modelBuilder.Entity("MovieApp.BusinessLayer.Model.Genre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +38,7 @@ namespace MovieApp.Migrations
                     b.ToTable("Genres");
                 });
 
-            modelBuilder.Entity("MovieApp.Models.Movie", b =>
+            modelBuilder.Entity("MovieApp.BusinessLayer.Model.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,9 +75,9 @@ namespace MovieApp.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("MovieApp.Models.Movie", b =>
+            modelBuilder.Entity("MovieApp.BusinessLayer.Model.Movie", b =>
                 {
-                    b.HasOne("MovieApp.Models.Genre", "Genre")
+                    b.HasOne("MovieApp.BusinessLayer.Model.Genre", "Genre")
                         .WithMany()
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)

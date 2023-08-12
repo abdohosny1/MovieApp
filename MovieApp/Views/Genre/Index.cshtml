@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GenreViewModel>
+
+@{
+    ViewData["Title"] = "Genre";
+}
+
+<h2>
+    <i class="bi bi-film"></i>
+    Genre
+</h2>
+
+<hr />
+
+<a class="btn btn-primary" asp-action="Create">
+    <i class="bi bi-plus"></i>Add Genre
+</a>
+
+<a class="btn btn-primary" asp-action="Search">
+    <i class="bi bi-search"></i>Search By Genre
+</a>
+
+<div class="mt-4">
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle"></i>
+            No movies found!
+        </div>
+    }
+    else
+    {
+        
+
+    <div class="card-body pt-0">
+            <div class="table-responsive">
+                <table class="table table-row-dashed table-row-gray-300 gy-2 align-middle  js-datatables" data-document-title="Authors">
+                    <thead>
+                        <tr class="fw-bold fs-6 text-gray-800">
+                            <th>Id</th>
+                            <th>Name</th>
+                         
+                            <th class="js-no-export">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                           <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>
+                                    <div>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">
+                                            <i class="bi bi-"></i>
+                                            Details
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                            <i class="bi bi-pencil"></i>
+                                            Edit
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-danger js-delete-Genre" data-id="@item.Id">
+                                            <i class="bi bi-trash"></i>
+                                            Delete
+ </a>
+                                    </div>
+</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    <script>
+     
+    </script>
+}

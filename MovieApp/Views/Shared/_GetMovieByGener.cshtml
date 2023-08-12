@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Movie>
+
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle"></i>
+        No movies found!
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var movie in Model)
+        {
+                          <partial name="_MovieRow" model="movie" />
+
+        }
+    </div>
+}
+
+@section Scripts {
+    <script src="~/js/genre.js" asp-append-version="true"></script>
+}

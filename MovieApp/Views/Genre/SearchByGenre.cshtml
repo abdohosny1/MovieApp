@@ -1,0 +1,55 @@
+﻿@model MovieFormViewModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h2>Search By Genre</h2>
+
+<hr />
+
+<section class="row justify-content-between">
+    <div class="col-md-8">
+      <div class="form-group">
+                <label class="text-muted" asp-for="GenreId"></label>
+            <select class="form-control" id="genreDropdown" asp-for="GenreId" asp-items="@(new SelectList(Model.Genres, "Id", "Name"))">
+                    <option>Selected Genre</option>
+                </select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+
+        <div id="resultContainer"></div>
+
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+        <script>
+      // Attach an event listener to the dropdown change event
+        document.getElementById('genreDropdown').addEventListener('change', function() {
+            var selectedValue = this.value; // Get the selected value
+            if (selectedValue) {
+                // Make an AJAX call
+                $.ajax({
+                    url: `/Genre/Search?genreId=${selectedValue}`, // Replace with the actual controller and action
+                    type: 'Post',
+                    success: function (response) {
+                        // Update the result container with the response
+                        console.log(response);
+                       $('#resultContainer').html(response);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log('Error:', errorThrown);
+                    }
+                });
+            }
+        });
+    </script>
+
+   <script src="~/js/genre.js" asp-append-version="true"></script>
+
+  
+}
